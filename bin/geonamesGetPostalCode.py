@@ -13,12 +13,9 @@
 # WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
 # License for the specific language governing permissions and limitations
 # under the License.
-
+log = open("output.log", 'w')
 import csv, sys, traceback, requests, json
 
-
-
-log = open("output.log", 'w')
 fout = open('/Users/mwilde/dev/csvtest.csv','rw')
 sys.path.append("requests.egg")
 
