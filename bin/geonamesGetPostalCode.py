@@ -71,6 +71,11 @@ def main():
         writer.writerow(row)
 
 try:
+    log = open("output.log", 'w')
+    import csv, sys, traceback, requests, json
+
+    fout = open('/Users/mwilde/dev/csvtest.csv','rw')
+    sys.path.append("requests.egg")
     main()
 except Exception as e:
     exc = traceback.format_exc()
