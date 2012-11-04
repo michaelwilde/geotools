@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#! /usr/bin/python
 #
 # Copyright 2011 Splunk, Inc.
 #
@@ -14,19 +14,16 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-log = open("./output.log", 'w')
-import csv, sys, traceback, requests, json
+log = open("output.log", 'w')
+import csv, sys, traceback, requests, json, fileinput
 
-f = open('myfile.out', 'w')
-f.write(sys.stdin)
-f.flush()
 
 #> geonames1.py < ~/Desktop/myfile.out
 #
 #And it should work more or less the same.
 
 
-fout = open('/Users/mwilde/dev/csvtest.csv','rw')
+#fout = open('/Users/mwilde/dev/csvtest.csv','rw')
 sys.path.append("requests.egg")
 
 try:
@@ -36,9 +33,9 @@ except:
 
 
 def main():
-    reader = csv.DictReader(f)
+    #reader = csv.DictReader(f)
 
-#    reader = csv.DictReader(sys.stdin)
+    reader = csv.DictReader(sys.stdin)
 
     # Write header
     csv.writer(sys.stdout).writerow(reader.fieldnames)
@@ -79,7 +76,7 @@ def main():
         }
         #print reader.join(row)
         writer.writerow(row)
-
+        
 try:
     main()
 
