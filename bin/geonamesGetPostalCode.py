@@ -13,8 +13,18 @@
 # WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
 # License for the specific language governing permissions and limitations
 # under the License.
+
 log = open("./output.log", 'w')
 import csv, sys, traceback, requests, json
+
+f = open('myfile.out', 'w')
+f.write(sys.stdin)
+f.flush()
+
+#> geonames1.py < ~/Desktop/myfile.out
+#
+#And it should work more or less the same.
+
 
 fout = open('/Users/mwilde/dev/csvtest.csv','rw')
 sys.path.append("requests.egg")
@@ -26,7 +36,7 @@ except:
 
 
 def main():
-    reader = csv.DictReader(fout)
+    reader = csv.DictReader(f)
 
 #    reader = csv.DictReader(sys.stdin)
 
@@ -72,7 +82,7 @@ def main():
 
 try:
     main()
-    
+
 except Exception as e:
     exc = traceback.format_exc()
     log.write(str(exc))
