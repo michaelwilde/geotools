@@ -72,6 +72,7 @@ def main():
 
 try:
     main()
+    
 except Exception as e:
     exc = traceback.format_exc()
     log.write(str(exc))
