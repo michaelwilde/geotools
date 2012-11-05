@@ -89,8 +89,8 @@ def main():
                 #region_code": doc["region"]["code"],
                 #"city_name": doc["name"]
             }
-            print row
-        #writer.writerow(row)
+            #print row
+            writer.writerow(row)
 
         
 try:
