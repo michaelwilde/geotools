@@ -17,6 +17,12 @@
 log = open("output.log", 'w')
 import csv, sys, traceback, requests, json, fileinput
 
+class dotdict(dict):
+    def __getattr__(self, attr):
+        return self.get(attr, None)
+    __setattr__= dict.__setitem__
+    __delattr__= dict.__delitem__
+
 
 #> geonames1.py < ~/Desktop/myfile.out
 #
@@ -26,10 +32,10 @@ import csv, sys, traceback, requests, json, fileinput
 #fout = open('/Users/mwilde/dev/csvtest.csv','rw')
 sys.path.append("requests.egg")
 
-try:
-    from requests import requests
-except:
-    pass
+#try:
+ #   from requests import requests
+#except:
+#    pass
 
 
 def main():
@@ -59,23 +65,33 @@ def main():
         lat = line["latitude"]
         lng = line["longitude"]
         
+        
+       
+
+       
+        
         payload = {'lat':lat, 'lng':lng,'username':'splunkcto','maxRows':'1'}
         r = requests.get("http://api.geonames.org/findNearbyPostalCodesJSON", params=payload)
         responsejson = json.loads(r.content)
-        postalCode = responsejson['postalCodes'][0]['postalCode']
+        dot_responsejson = dotdict(responsejson)
+        #postalCode = responsejson['postalCodes'][0]['postalCode']
+        for x in dot_responsejson.postalCodes:
+            x_dot = dotdict(x)
+       
         
-        row = {
-            "longitude": str(lat),
-            "latitude": str(lng),
-            "postalCode": str(postalCode)
-            #"country_name": doc["country"]["name"],
-            #"country_code": doc["country"]["iso"],
-            #"region_name": doc["region"]["name"],
-            #region_code": doc["region"]["code"],
-            #"city_name": doc["name"]
-        }
-        #print reader.join(row)
-        writer.writerow(row)
+            row = {
+                "longitude": str(lat),
+                "latitude": str(lng),
+                "postalCode": str(x_dot.postalCode)
+                #"country_name": doc["country"]["name"],
+                #"country_code": doc["country"]["iso"],
+                #"region_name": doc["region"]["name"],
+                #region_code": doc["region"]["code"],
+                #"city_name": doc["name"]
+            }
+            print row
+        #writer.writerow(row)
+
         
 try:
     main()
