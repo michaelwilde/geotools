@@ -15,9 +15,13 @@
 # under the License.
 
 log = open("output.log", 'w')
+
+
+import csv, sys, traceback, json, fileinput
+
 sys.path.append("requests.egg")
 
-import csv, sys, traceback, requests, json, fileinput
+import requests
 
 class dotdict(dict):
     def __getattr__(self, attr):
