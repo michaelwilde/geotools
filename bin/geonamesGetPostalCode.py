@@ -15,6 +15,8 @@
 # under the License.
 
 log = open("output.log", 'w')
+sys.path.append("requests.egg")
+
 import csv, sys, traceback, requests, json, fileinput
 
 class dotdict(dict):
@@ -30,7 +32,6 @@ class dotdict(dict):
 
 
 #fout = open('/Users/mwilde/dev/csvtest.csv','rw')
-sys.path.append("requests.egg")
 
 #try:
  #   from requests import requests
