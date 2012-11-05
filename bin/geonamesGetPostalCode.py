@@ -20,6 +20,8 @@ log = open("output.log", 'w')
 import csv, sys, traceback, json, fileinput
 
 sys.path.append("requests.egg")
+#to accomodate splunk versions that do not include uuid module.
+sys.path.append("uuid-1.30")
 
 import requests
 
