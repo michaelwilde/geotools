@@ -16,8 +16,13 @@
 
 log = open("output.log", 'w')
 
+log.write("STARTED\n")
+log.flush()
 
 import csv, sys, traceback, json, fileinput
+
+log.write("IMPORTED\n")
+log.flush()
 
 sys.path.append("requests.egg")
 #to accomodate splunk versions that do not include uuid module.
