@@ -20,7 +20,7 @@ log = open("output.log", 'w')
 log.write("STARTED\n")
 log.flush()
 
-import csv, sys, traceback, json, fileinput
+import csv, sys, traceback, json, fileinput, string
 
 log.write("IMPORTED\n")
 log.flush()
@@ -64,34 +64,31 @@ def main():
        
         lat = line["latitude"]
         lng = line["longitude"]
-        
-        
-       
 
-       
-        
         payload = {'lat':lat, 'lng':lng,'username':'splunkcto','maxRows':'1'}
         r = requests.get("http://api.geonames.org/findNearbyPostalCodesJSON", params=payload)
         responsejson = json.loads(r.content)
         dot_responsejson = dotdict(responsejson)
-        #postalCode = responsejson['postalCodes'][0]['postalCode']
+
+
+        try:
+            newlat = float(lat)
+
+        except Exception, e:
+            continue
+        
+
         for x in dot_responsejson.postalCodes:
             x_dot = dotdict(x)
-       
-        
             row = {
                 "longitude": str(lat),
                 "latitude": str(lng),
                 "postalCode": str(x_dot.postalCode)
-                #"country_name": doc["country"]["name"],
-                #"country_code": doc["country"]["iso"],
-                #"region_name": doc["region"]["name"],
-                #region_code": doc["region"]["code"],
-                #"city_name": doc["name"]
+    
             }
-            #print row
             writer.writerow(row)
-
+           
+                   
         
 try:
     main()
