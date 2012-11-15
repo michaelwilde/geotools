@@ -38,19 +38,6 @@ class dotdict(dict):
     __delattr__= dict.__delitem__
 
 
-#> geonames1.py < ~/Desktop/myfile.out
-#
-#And it should work more or less the same.
-
-
-#fout = open('/Users/mwilde/dev/csvtest.csv','rw')
-
-#try:
- #   from requests import requests
-#except:
-#    pass
-
-
 def main():
     #reader = csv.DictReader(f)
 
@@ -71,7 +58,7 @@ def main():
 
 
     #traverse the datastructure dict/list/dict down to the postal code
-    ## i probably don't need this line, i assume as its redundant
+
 
     for line in reader:
        
