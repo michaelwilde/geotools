@@ -31,9 +31,12 @@ export = system
 access = read : [ * ]
 export = system
 
-
 ### VIEWSTATES: even normal users should be able to create shared viewstates
 
 [viewstates]
+access = read : [ * ], write : [ * ]
+export = system
+
+[searchscripts]
 access = read : [ * ], write : [ * ]
 export = system
