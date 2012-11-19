@@ -82,7 +82,7 @@ def main():
             x_dot = dotdict(x)
             row = {
                 "latitude" : str(lat),
-                "longttude" : str(lng),
+                "longitude" : str(lng),
                 "postalCode" : str(x_dot.postalCode)
     
             }
