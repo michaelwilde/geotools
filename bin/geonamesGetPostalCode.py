@@ -81,9 +81,9 @@ def main():
         for x in dot_responsejson.postalCodes:
             x_dot = dotdict(x)
             row = {
-                "longitude": str(lat),
-                "latitude": str(lng),
-                "postalCode": str(x_dot.postalCode)
+                "latitude" : str(lat),
+                "longtude" : str(lng),
+                "postalCode" : str(x_dot.postalCode)
     
             }
             writer.writerow(row)
