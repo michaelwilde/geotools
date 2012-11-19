@@ -7,7 +7,7 @@ Lookups:
 
 	 	Testing this lookup
 	 	 1.  At command line interface (in *NIX operating systems) run this:
-	 	 		cd $SPLUNK_HOME/etc/apps/geotools/
+	 	 		cd $SPLUNK_HOME/etc/apps/geotools/bin
 	 	 		$SPLUNK_HOME/bin/splunk cmd python bin/geonamesGetPostalCode.py ./test_at_CLI.csv
 
 	 	 		What should come back will be a CSV structure that will look like this:
