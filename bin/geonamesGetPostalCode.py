@@ -49,7 +49,7 @@ def main():
     # Create dict writer
     writer = csv.DictWriter(sys.stdout, reader.fieldnames)
 
-    #setup arguments to the get request.
+    #setup arguments to the get request. 
 
     #make the request to geonames
 
@@ -82,7 +82,7 @@ def main():
             x_dot = dotdict(x)
             row = {
                 "latitude" : str(lat),
-                "longtude" : str(lng),
+                "longttude" : str(lng),
                 "postalCode" : str(x_dot.postalCode)
     
             }
