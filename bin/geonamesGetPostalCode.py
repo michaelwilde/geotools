@@ -49,7 +49,6 @@ def main():
     # Create dict writer
     writer = csv.DictWriter(sys.stdout, reader.fieldnames)
 
-    #setup arguments to the get request. 
 
     #make the request to geonames
 
